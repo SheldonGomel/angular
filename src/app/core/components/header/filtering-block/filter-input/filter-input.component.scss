@@ -1,0 +1,20 @@
+@import "@styles/_variables.scss";
+p {
+  color: $filter-button-color;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  margin: 5px;
+}
+input{
+  border:none;
+  color: $filter-text-color;
+
+}
+input:focus{
+  outline: $filter-button-color solid 2px;
+ }
+.wrapper{
+  display: flex;
+  align-items: center;
+  height: 2em;
+}

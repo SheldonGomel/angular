@@ -1,0 +1,75 @@
+@import "@styles/_variables.scss";
+.wrapper {
+  width: 100wh;
+  padding: 20px;
+  margin: auto;
+  background-color: #fff;
+}
+.login-container {
+  max-width: 344px;
+  margin: 45px auto;
+  padding: 20px;
+  border: 1px solid $login-background;
+  background-color: $login-background;
+  border-radius: 5px;
+  & h2 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+  }
+}
+
+.form-group label {
+  display: block;
+  padding: 5px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #828282;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: $login-input-background;
+  outline: none;
+  border: none;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  &::placeholder {
+    padding: 0 5px;
+    color: $filter-text-color;
+  }
+}
+
+.btn {
+  width: 124px;
+  height: 30px;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 22px auto;
+  color: #fff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+
+  background-color: $filter-button-color;
+  border-radius: 5px;
+  filter: drop-shadow(2px 0px 4px #2f80ed);
+
+  &:hover {
+    background-color: $filter-button-hover-color;
+    cursor: pointer;
+  }
+}

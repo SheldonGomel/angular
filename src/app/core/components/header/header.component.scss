@@ -1,0 +1,25 @@
+@import "@styles/_variables.scss";
+.container{
+  background-color: $primary-background-color;
+
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  height: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

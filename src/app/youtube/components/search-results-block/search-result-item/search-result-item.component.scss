@@ -1,0 +1,25 @@
+@import "@styles/_variables.scss";
+
+.wrapper {
+  width: 264px;
+  height: 327px;
+  margin: 14px;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(rgba(0, 0, 0, 0.25) 3px 3px 3px);
+  background-color: $primary-background-color;
+  border-radius: 5px;
+}
+
+.counters {
+  width: 220px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+}

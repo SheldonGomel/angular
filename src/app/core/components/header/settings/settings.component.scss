@@ -1,0 +1,10 @@
+img {
+  width: 30px;
+  height: 30px;
+  margin: 4px 10px 0;
+  cursor: pointer;
+  filter: drop-shadow(2px 0px 4px #2f80ed);
+  &:hover{
+    filter: opacity(70%);
+  }
+}

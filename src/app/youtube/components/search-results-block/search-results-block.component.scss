@@ -1,0 +1,17 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 14px;
+  background-color: #fff;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}

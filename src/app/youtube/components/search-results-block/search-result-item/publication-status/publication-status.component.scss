@@ -1,0 +1,10 @@
+@import "@styles/_variables.scss";
+
+.wrapper{
+position: absolute;
+width: 264px;
+height: 5px;
+bottom: 0;
+background-color: $filter-button-color;
+border-radius: 0px 0px 5px 5px;
+}

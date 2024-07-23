@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="search">
+      <app-logo></app-logo>
+      <app-search (submit)="clickSearch()"></app-search>
+      <app-settings (toggle)="toggleComponent()"></app-settings>
+    </div>
+    <app-login-block></app-login-block>
+  </div>
+</div>
+<app-filtering-block *ngIf="isComponentVisible"></app-filtering-block>
