@@ -1,6 +1,6 @@
-@import "@styles/_variables.scss";
+@use "@styles/_variables.scss" as colors;
 .container{
-  background-color: $primary-background-color;
+  background-color: colors.$primary-background-color;
 }
 .wrapper {
   max-width: 600px;
@@ -14,5 +14,5 @@
 }
 
 p {
-  color: $filter-text-color;
+  color: colors.$filter-text-color;
 }

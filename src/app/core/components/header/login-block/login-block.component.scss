@@ -1,6 +1,32 @@
+@use "@styles/_variables.scss" as colors;
+
 .wrapper{
   display: flex;
   align-items: center;
   gap:5px;
   cursor: pointer;
+}
+
+.logoutBtn{
+  width: 60px;
+  height: 30px;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 22px auto;
+  color: #fff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+  background-color: colors.$filter-button-color;
+  border-radius: 5px;
+  filter: drop-shadow(2px 0px 4px #2f80ed);
+
+  &:hover {
+    background-color: colors.$filter-button-hover-color;
+    cursor: pointer;
+  }
 }

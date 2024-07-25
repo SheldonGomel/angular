@@ -1,4 +1,4 @@
-@import "@styles/_variables.scss";
+@use "@styles/_variables.scss" as colors;
 
 button {
   width: 80px;
@@ -7,11 +7,11 @@ button {
   border: none;
   padding: 0;
   color: #fff;
-  background-color: $filter-button-color;
+  background-color: colors.$filter-button-color;
   border-radius: 0px 4px 4px 0px;
   filter: drop-shadow(2px 0px 4px #2f80ed);
   &:hover {
-    background-color: $filter-button-hover-color;
+    background-color: colors.$filter-button-hover-color;
     cursor: pointer;
   }
 }
@@ -22,12 +22,12 @@ input {
   padding: 0 5px;
   outline: none;
   border: none;
-  background-color: $search-background-color;
+  background-color: colors.$search-background-color;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
   &::placeholder {
     padding: 0 5px;
-    color: $filter-text-color;
+    color: colors.$filter-text-color;
   }
 }

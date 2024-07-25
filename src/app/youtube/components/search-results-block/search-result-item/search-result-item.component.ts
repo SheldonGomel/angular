@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ResultItem } from 'app/youtube/models/search-result-item.model';
+import { Item } from 'app/youtube/models/search-result-item.model';
 import { CommentsCountComponent } from './comments-count/comments-count.component';
 import { DislikesCountComponent } from './dislikes-count/dislikes-count.component';
 import { LikesCountComponent } from './likes-count/likes-count.component';
@@ -26,17 +26,21 @@ import { PublicationStatusComponent } from './publication-status/publication-sta
   styleUrl: './search-result-item.component.scss',
 })
 export class SearchResultItemComponent {
+  url = '';
+
+  likes = '0';
+
+  dislikes = '0';
+
+  views = '0';
+
+  comments = '0';
+
   date = new Date();
 
-  @Input() item: ResultItem = {
-    url: '',
-    likes: '0',
-    dislikes: '0',
-    views: '0',
-    comments: '0',
-    date: '',
-    title: '',
-  };
+  title = '';
+
+  @Input() item: Item | undefined = undefined;
 
   ngOnInit(): void {
     this.setDate();
@@ -47,6 +51,12 @@ export class SearchResultItemComponent {
   }
 
   setDate() {
-    this.date = new Date(this.item.date);
+    this.date = new Date(this.item!.snippet.publishedAt);
+    this.url = this.item!.snippet.thumbnails.medium.url;
+    this.title = this.item!.snippet.title;
+    this.likes = this.item!.statistics.likeCount;
+    this.dislikes = this.item!.statistics.dislikeCount;
+    this.views = this.item!.statistics.viewCount;
+    this.comments = this.item!.statistics.commentCount;
   }
 }

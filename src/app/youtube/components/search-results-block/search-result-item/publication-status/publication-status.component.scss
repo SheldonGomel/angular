@@ -1,10 +1,8 @@
-@import "@styles/_variables.scss";
+@use "@styles/_variables.scss" as colors;
 
 .wrapper{
-position: absolute;
-width: 264px;
+width: 100%;
 height: 5px;
 bottom: 0;
-background-color: $filter-button-color;
-border-radius: 0px 0px 5px 5px;
+background-color: colors.$filter-button-color;
 }

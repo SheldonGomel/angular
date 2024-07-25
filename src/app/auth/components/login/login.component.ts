@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { LoginService } from 'app/auth/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -19,23 +20,22 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService,
+  ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.minLength(1)]],
+      password: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // this.authService.login(this.loginForm.value).subscribe(
-      //   (success) => {
-      //     this.router.navigate(['/dashboard']);
-      //   },
-      //   (error) => {
-      //     alert('Login failed');
-      //   }
-      // );
+      this.loginService.login(this.loginForm.value).subscribe(() => {
+        this.router.navigate(['/']);
+      });
     }
   }
 }

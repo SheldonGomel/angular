@@ -1,0 +1,98 @@
+@use "@styles/_variables.scss" as colors;
+
+.container {
+  display: flex;
+  width: 1200px;
+  margin: 44px auto;
+  align-content: center;
+}
+.wrapper {
+  display: flex;
+  background-color: colors.$primary-background-color;
+  border-radius: 5px;
+  filter: drop-shadow(5px 10px 10px rgba(47, 128, 237, 0.25));
+}
+.backBtn {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.image {
+  width: 730px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.titleBlock {
+  display: flex;
+  margin: 35px 37px 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  margin:  0 ;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: colors.$more-page-title;
+  width: 250px;
+  height: 55px;
+  overflow: hidden;
+}
+.date{
+
+align-self: flex-end;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 12px;
+text-align: right;
+
+color: colors.$text-not-found;
+
+
+}
+
+.description {
+  margin: 0 37px 20px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: colors.$text-not-found;
+  flex-grow: 3;
+  overflow: hidden;
+}
+
+.counters {
+  width: 220px;
+  margin: 4px auto;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+  align-self: flex-end;
+}
+
+.status{
+  align-self: flex-end;
+  width: 100%;
+  margin: 5px 0 0;
+  border-radius: 0px 0px 5px 0px;
+  overflow: hidden;
+  perspective: 1px; 
+}

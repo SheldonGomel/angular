@@ -17,11 +17,7 @@ export class FilteringBlockComponent {
     views: 0,
   };
 
-  private searchService: SearchService;
-
-  constructor(searchService: SearchService) {
-    this.searchService = searchService;
-  }
+  constructor(private searchService: SearchService) {}
 
   onSortByDateClick(): void {
     this.filterCriteriaState.views = 0;

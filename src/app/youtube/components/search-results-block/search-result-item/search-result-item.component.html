@@ -1,12 +1,13 @@
-<div class="wrapper">
-  <app-video-thumbnail [url]="item.url"></app-video-thumbnail>
+@if(item){<div class="wrapper">
+  <app-video-thumbnail [url]="url"></app-video-thumbnail>
   <div class="counters">
-    <app-views-count [count]="item.views"></app-views-count>
-    <app-likes-count [count]="item.likes"></app-likes-count>
-    <app-dislikes-count [count]="item.dislikes"></app-dislikes-count>
-    <app-comments-count [count]="item.comments"></app-comments-count>
+    <app-views-count [count]="views"></app-views-count>
+    <app-likes-count [count]="likes"></app-likes-count>
+    <app-dislikes-count [count]="dislikes"></app-dislikes-count>
+    <app-comments-count [count]="comments"></app-comments-count>
   </div>
-  <app-video-title [title]="item.title"></app-video-title>
-  <app-more-button></app-more-button>
-  <app-publication-status [date]="date"></app-publication-status>
-</div>
+  <app-video-title class="title" [title]="title"></app-video-title>
+  <app-more-button [item]="item"></app-more-button>
+
+    <app-publication-status class="status" [date]="date"></app-publication-status>
+</div>}

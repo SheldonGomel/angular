@@ -1,15 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <!-- | filterByText:searchText" -->
-    <app-search-result-item *ngFor="let item of (searchService.data$ | async)! | filterByText:searchText" 
-      [item]="{
-        url:item.snippet.thumbnails.medium.url,
-        likes:item.statistics.likeCount, 
-        dislikes:item.statistics.dislikeCount, 
-        views:item.statistics.viewCount, 
-        comments:item.statistics.commentCount,
-        title:item.snippet.title,
-        date:item.snippet.publishedAt
-      }"></app-search-result-item>
+    <app-search-result-item *ngFor="let item of (data)! | filterByText:searchText" 
+      [item]="item"></app-search-result-item>
   </div>
 </div>

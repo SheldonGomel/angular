@@ -1,13 +1,13 @@
-@import "@styles/_variables.scss";
+@use "@styles/_variables.scss" as colors;
 
 .more {
   display: block;
   width: 120px;
   height: 32px;
-  background-color: $filter-button-color;
+  background-color: colors.$filter-button-color;
   border: none;
   border-radius: 3px;
-  margin: 0 auto;
+  margin: 0px auto;
   filter: drop-shadow(2px 0px 4px #2f80ed);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-style: normal;
@@ -19,5 +19,5 @@
 }
 .more:hover {
   cursor: pointer;
-  background-color: $filter-button-hover-color;
+  background-color: colors.$filter-button-hover-color;
 }

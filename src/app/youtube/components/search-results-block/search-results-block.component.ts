@@ -4,6 +4,7 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { Item } from 'app/youtube/models/search-result-item.model';
 import { FilterByTextPipe } from 'app/youtube/pipes/filter-by-text.pipe';
 import { SearchService } from 'app/youtube/services/search.service';
+import { Router } from '@angular/router';
 import { SearchResultItemComponent } from './search-result-item/search-result-item.component';
 
 @Component({
@@ -17,22 +18,19 @@ import { SearchResultItemComponent } from './search-result-item/search-result-it
 export class SearchResultsBlockComponent implements OnInit {
   data: Item[] = [];
 
-  http: DataService;
+  searchText: string = '';
 
-  searchText:string = '';
-
-  searchService: SearchService;
-
-  constructor(http: DataService, searchService: SearchService) {
-    this.http = http;
-    this.searchService = searchService;
-    this.data = [];
-  }
+  constructor(
+    private http: DataService,
+    private searchService: SearchService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.http.getData().subscribe((data) => {
       this.data = [...data.items];
       this.searchService.setData(this.data);
+      // this.router.navigate(['/hero', 'Fdf5aTYRW0E']);
       // this.searchService.setSearchText(this.searchText);
     });
     this.searchService.getSearchText().subscribe((text) => {

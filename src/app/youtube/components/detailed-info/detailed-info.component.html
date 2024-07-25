@@ -1,0 +1,23 @@
+<div class="container">
+  <img class="backBtn" src="assets/back.svg" alt="back" (click)="returnBack()">
+  <div class="wrapper">
+    <img class="image" src="{{details.imgurl}}" alt="">
+    <div class="info">
+      <div class="titleBlock">
+        <p class="title">{{details.title}}</p>
+        <p class="date">{{details.date}}</p>
+      </div>
+      <div class="description">
+        <p>Description</p>
+        <p>{{details.description}}</p>
+      </div>
+      <div class="counters">
+        <app-views-count [count]="details.views"></app-views-count>
+        <app-likes-count [count]="details.likes"></app-likes-count>
+        <app-dislikes-count [count]="details.dislikes"></app-dislikes-count>
+        <app-comments-count [count]="details.comments"></app-comments-count>
+      </div>
+      <app-publication-status [date]="details.statusDate" class="status"></app-publication-status>
+    </div>
+  </div>
+</div>
