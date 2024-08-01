@@ -10,7 +10,7 @@ import { Item } from 'app/youtube/models/search-result-item.model';
   styleUrl: './more-button.component.scss',
 })
 export class MoreButtonComponent {
-  @Input() item: Item | undefined = undefined;
+  @Input() item?: Item;
 
   constructor(private router: Router) {}
 

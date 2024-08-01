@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 import { Item } from 'app/youtube/models/search-result-item.model';
 import { CommentsCountComponent } from './comments-count/comments-count.component';
 import { DislikesCountComponent } from './dislikes-count/dislikes-count.component';
@@ -25,7 +30,7 @@ import { PublicationStatusComponent } from './publication-status/publication-sta
   templateUrl: './search-result-item.component.html',
   styleUrl: './search-result-item.component.scss',
 })
-export class SearchResultItemComponent {
+export class SearchResultItemComponent implements OnInit, OnChanges {
   url = '';
 
   likes = '0';
@@ -40,7 +45,7 @@ export class SearchResultItemComponent {
 
   title = '';
 
-  @Input() item: Item | undefined = undefined;
+  @Input() item: Item | null = null;
 
   ngOnInit(): void {
     this.setDate();

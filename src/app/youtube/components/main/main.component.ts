@@ -14,10 +14,7 @@ import { SearchService } from 'app/youtube/services/search.service';
 export class MainComponent {
   isComponentVisible: boolean = false;
 
-  searchService: SearchService;
-
-  constructor(searchService: SearchService) {
-    this.searchService = searchService;
+  constructor(private searchService: SearchService) {
   }
 
   ngOnInit(): void {

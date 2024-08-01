@@ -32,34 +32,34 @@ export class SearchService {
     return this.dataSubject.asObservable();
   }
 
-  sortData(dir:number, criteria: 'date' | 'views'): void {
+  private sortCB = (a: Item, b: Item, criteria: 'date' | 'views') => {
+    switch (criteria) {
+      case 'date':
+        return new Date(a.snippet.publishedAt).getTime()
+          < new Date(b.snippet.publishedAt).getTime()
+          ? 1
+          : -1;
+      case 'views':
+        return Number(a.statistics.viewCount) < Number(b.statistics.viewCount)
+          ? 1
+          : -1;
+      default:
+        return 0;
+    }
+  };
+
+  sortData(dir: number, criteria: 'date' | 'views'): void {
     const currentData = this.dataSubject.value;
     let sortedData;
-    const sortCB = (a:Item, b:Item) => {
-      switch (criteria) {
-        case 'date':
-          return (new Date(a.snippet.publishedAt).getTime()
-           < new Date(b.snippet.publishedAt).getTime()
-            ? 1
-            : -1);
-        case 'views':
-          return (Number(a.statistics.viewCount)
-            < Number(b.statistics.viewCount)
-            ? 1
-            : -1);
-        default:
-          return 0;
-      }
-    };
     if (dir === 1) {
-      sortedData = currentData.sort((a, b) => sortCB(b, a));
+      sortedData = currentData.sort((a, b) => this.sortCB(b, a, criteria));
     } else if (dir === 2) {
-      sortedData = currentData.sort((a, b) => sortCB(a, b));
+      sortedData = currentData.sort((a, b) => this.sortCB(a, b, criteria));
     } else return;
     this.dataSubject.next(sortedData);
   }
 
-  setSearchText(text:string): void {
+  setSearchText(text: string): void {
     this.searchTextSubject.next(text);
   }
 

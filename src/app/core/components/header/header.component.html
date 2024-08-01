@@ -8,4 +8,6 @@
     <app-login-block></app-login-block>
   </div>
 </div>
-<app-filtering-block *ngIf="isComponentVisible"></app-filtering-block>
+@if(isComponentVisible) {
+<app-filtering-block></app-filtering-block>
+}

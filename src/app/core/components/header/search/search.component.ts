@@ -1,32 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SearchService } from 'app/youtube/services/search.service';
+import {
+  debounceTime,
+  filter,
+  distinctUntilChanged,
+  tap,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, FormsModule, ReactiveFormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
-export class SearchComponent {
-  // @Output() submit = new EventEmitter<void>();
+export class SearchComponent implements OnInit {
+  searchText = '';
 
-  // onSearchClick(): void {
-  //   this.submit.emit();
-  // }
+  searchControl = new FormControl();
 
-  private searchService: SearchService;
+  constructor(private searchService: SearchService) {}
 
-  constructor(searchService: SearchService) {
-    this.searchService = searchService;
+  ngOnInit(): void {
+    this.searchControl.valueChanges
+      .pipe(
+        tap((value) => {
+          this.searchText = value;
+        }),
+        debounceTime(500),
+        distinctUntilChanged(),
+        filter((value) => value.length >= 3),
+      )
+      .subscribe((value) => {
+        this.searchService.toggleVisibility();
+        this.searchService.setSearchText(value);
+      });
   }
 
-  onButtonClick(): void {
-    this.searchService.toggleVisibility();
-  }
-
-  onDataSortClick(): void {
-    this.searchService.toggleVisibility();
+  onPressEnter(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.searchService.toggleVisibility();
+      this.searchService.setSearchText(this.searchText);
+    }
   }
 }

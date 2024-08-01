@@ -27,20 +27,15 @@ export class SearchResultsBlockComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http.getData().subscribe((data) => {
-      this.data = [...data.items];
-      this.searchService.setData(this.data);
-      // this.router.navigate(['/hero', 'Fdf5aTYRW0E']);
-      // this.searchService.setSearchText(this.searchText);
-    });
     this.searchService.getSearchText().subscribe((text) => {
       this.searchText = text;
-    });
-  }
-
-  ngOnChanges() {
-    this.searchService.getData().subscribe((data) => {
-      this.data = data;
+      this.http.searchData(this.searchText).subscribe((searchData) => {
+        const ids = searchData.items.map((item) => item.id.videoId);
+        this.http.getData(ids.join(',')).subscribe((videoData) => {
+          this.data = [...videoData.items];
+          this.searchService.setData(this.data);
+        });
+      });
     });
   }
 }

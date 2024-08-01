@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,24 +9,30 @@ export class LoginService {
 
   userName = '';
 
-  login(credentials: { email: string; password: string }): Observable<void> {
+  private loggedIn = new BehaviorSubject<boolean>(false);
+
+  constructor() {
+    const token = localStorage.getItem('fake-jwt-token');
+    this.loggedIn.next(!!token);
+  }
+
+  login(credentials: { name: string; password: string }): void {
     localStorage.setItem('fake-jwt-token', this.TOKEN_KEY);
-    localStorage.setItem('email', credentials.email);
-    this.userName = credentials.email;
-    return of(undefined);
+    localStorage.setItem('name', credentials.name);
+    this.loggedIn.next(true);
   }
 
-  logout() {
-    this.userName = '';
+  logout(): void {
     localStorage.removeItem('fake-jwt-token');
-    localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    this.loggedIn.next(false);
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('fake-jwt-token');
+  isLoggedIn(): Observable<boolean> {
+    return this.loggedIn.asObservable();
   }
 
   getUserName(): string {
-    return localStorage.getItem('email') || '';
+    return localStorage.getItem('name') || '';
   }
 }

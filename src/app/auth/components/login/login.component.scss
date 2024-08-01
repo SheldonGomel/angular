@@ -13,7 +13,7 @@
   border: 1px solid colors.$login-background;
   background-color: colors.$login-background;
   border-radius: 5px;
-  & h2 {
+  & .label {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 700;
@@ -77,4 +77,10 @@
     border: 2px solid colors.$login-input-background;
     color: colors.$login-input-background;
   }
+}
+
+.message{
+  margin: 0;
+  padding: 0 10px;
+  border-left: 3px  red solid;
 }

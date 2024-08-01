@@ -71,6 +71,13 @@ export interface Item {
   statistics: Statistics;
 }
 
+export interface SearchItem {
+  kind: string;
+  etag: string;
+  id: { kind: string; videoId: string };
+  snippet: Snippet;
+}
+
 export interface ResultItem {
   url: string;
   likes: string;
@@ -80,3 +87,5 @@ export interface ResultItem {
   date: string;
   title: string;
 }
+
+export type StatusColors = 'red' | 'green' | 'blue' | 'yellow';

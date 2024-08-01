@@ -1,2 +1,1 @@
-<input type="text" placeholder="What are you want to find out?">
-<button (click)="onButtonClick()" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Search</button>
+<input type="text" placeholder="What are you want to find out?" [formControl]="searchControl" (keyup)="onPressEnter($event)"> 

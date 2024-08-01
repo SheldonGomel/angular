@@ -12,14 +12,24 @@ import { LoginService } from 'app/auth/services/login.service';
 export class LoginBlockComponent {
   logginState: boolean = false;
 
-  loginService: LoginService;
+  constructor(private loginService: LoginService, private router: Router) {}
 
-  constructor(loginService: LoginService, private router: Router) {
-    this.loginService = loginService;
+  ngOnInit() {
+    this.loginService.isLoggedIn().subscribe((val) => {
+      this.logginState = val;
+    });
   }
 
   logout() {
     this.loginService.logout();
+    this.router.navigate(['/login', {}]);
+  }
+
+  login() {
     this.router.navigate(['/login']);
+  }
+
+  get getUserName() {
+    return this.loginService.getUserName();
   }
 }

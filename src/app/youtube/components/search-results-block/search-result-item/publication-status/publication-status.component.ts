@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DateBackgroundDirective } from 'app/youtube/directives/date-background.directive';
+import { StatusColors } from 'app/youtube/models/search-result-item.model';
 
 @Component({
   selector: 'app-publication-status',
@@ -9,7 +10,7 @@ import { DateBackgroundDirective } from 'app/youtube/directives/date-background.
   styleUrl: './publication-status.component.scss',
 })
 export class PublicationStatusComponent {
-  color = 'red';
+  color: StatusColors = 'red';
 
   @Input() date = new Date();
 }

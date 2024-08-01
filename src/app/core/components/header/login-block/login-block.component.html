@@ -1,13 +1,12 @@
-@if (loginService.isLoggedIn()){
+@if (logginState){
 <div class="wrapper">
-  <p>{{loginService.getUserName()}}</p>
+  <p>{{getUserName}}</p>
   <img src="assets/login.svg" alt="avatar">
-  <button (click)="logout()" class="logoutBtn">Logout</button>
+  <button (click)="logout()" class="btn">Logout</button>
 </div>
 }
 @else{
-<div class="wrapper" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
-  <p>Your Name</p>
-  <img src="assets/login.svg" alt="avatar">
+<div class="wrapper">
+  <button (click)="login()" class="btn">Login</button>
 </div>
 }

@@ -70,7 +70,9 @@ color: colors.$text-not-found;
   font-size: 12px;
   line-height: 14px;
   color: colors.$text-not-found;
-  flex-grow: 3;
+  flex-grow: 2;
+  max-height: 300px;
+  width: 400px;
   overflow: hidden;
 }
 

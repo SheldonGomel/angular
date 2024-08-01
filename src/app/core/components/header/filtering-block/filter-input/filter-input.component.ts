@@ -12,11 +12,7 @@ import { SearchService } from 'app/youtube/services/search.service';
 export class FilterInputComponent {
   searchText: string = '';
 
-  private searchService: SearchService;
-
-  constructor(searchService: SearchService) {
-    this.searchService = searchService;
-  }
+  constructor(private searchService: SearchService) {}
 
   onChange() {
     this.searchService.setSearchText(this.searchText);
