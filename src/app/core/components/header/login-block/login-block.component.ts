@@ -14,22 +14,26 @@ export class LoginBlockComponent {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginService.isLoggedIn().subscribe((val) => {
       this.logginState = val;
     });
   }
 
-  logout() {
+  logout(): void {
     this.loginService.logout();
     this.router.navigate(['/login', {}]);
   }
 
-  login() {
+  login(): void {
     this.router.navigate(['/login']);
   }
 
-  get getUserName() {
+  get getUserName(): string {
     return this.loginService.getUserName();
+  }
+
+  goToAdminPage(): void {
+    this.router.navigate(['/admin']);
   }
 }

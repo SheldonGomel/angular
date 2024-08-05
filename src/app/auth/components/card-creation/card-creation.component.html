@@ -1,0 +1,64 @@
+<div class="wrapper">
+  <div class="container">
+    <h1 class="formLabel">Create new card</h1>
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="title">Title</label>
+        <input id="title" formControlName="title" class="form-control" />
+        @if (isControlInvalid('title')){
+        <p class="message">{{ getErrorMessage('title') }}</p>
+        }
+      </div>
+
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        @if (isControlInvalid('description')){
+          <p class="message">{{ getErrorMessage('description') }}</p>
+          }
+      </div>
+
+      <div>
+        <label for="imageLink">Image Link</label>
+        <input id="imageLink" formControlName="imageLink" class="form-control" />
+        @if (isControlInvalid('imageLink')){
+          <p class="message">{{ getErrorMessage('imageLink') }}</p>
+          }
+      </div>
+
+      <div>
+        <label for="videoLink">Video Link</label>
+        <input id="videoLink" formControlName="videoLink" class="form-control" />
+        @if (isControlInvalid('videoLink')){
+          <p class="message">{{ getErrorMessage('videoLink') }}</p>
+          }
+      </div>
+
+      <div>
+        <label for="creationDate">Creation Date</label>
+        <input id="creationDate" type="date" formControlName="creationDate" class="form-control" />
+        @if (isControlInvalid('creationDate')){
+          <p class="message">{{ getErrorMessage('creationDate') }}</p>
+          }
+      </div>
+
+      <div formArrayName="tags">
+        <div *ngFor="let tag of tags.controls; let i = index" [formGroupName]="i">
+          <label for="tag">Tag {{ i + 1 }}</label>
+          <div class="tag">
+            <input id="tag" formControlName="tag" class="form-control" />
+            @if(i>0){<button class="btn remove" type="button" (click)="removeTag(i)">Remove</button>}
+          </div>
+          @if (isTagInvalid(i)){
+            <p class="message">{{ getTagErrorMessage(i) }}</p>
+            }
+        </div>
+      </div>
+      <div>
+        <button class="btn" type="button" (click)="addTag()" [disabled]="tags.length >= 5">Add Tag</button>
+        <button class="btn" type="button" (click)="resetForm()">Reset</button>
+      </div>
+      <button class="btn create" type="submit" [disabled]="cardForm.invalid">Create card</button>
+    </form>
+  </div>
+</div>

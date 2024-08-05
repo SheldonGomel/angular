@@ -1,7 +1,10 @@
 <div class="wrapper">
   <div class="container">
     <!-- | filterByText:searchText" -->
-    <app-search-result-item *ngFor="let item of (data)! | filterByText:searchText" 
+    <app-search-result-item *ngFor="let item of (data)! | filterByText:searchText"
       [item]="item"></app-search-result-item>
+    @if(errorMessage.length){
+      <p [innerHTML]="errorMessage" class="error"></p>
+    }
   </div>
 </div>

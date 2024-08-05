@@ -65,7 +65,8 @@
     "@typescript-eslint/no-explicit-any": "error",
     "no-useless-constructor": "off",
     "no-empty-function": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "dot-notation":"off"
   }
 }
 

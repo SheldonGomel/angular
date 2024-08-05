@@ -1,7 +1,10 @@
 @if (logginState){
 <div class="wrapper">
-  <p>{{getUserName}}</p>
-  <img src="assets/login.svg" alt="avatar">
+  <div class="admin wrapper" (click)="goToAdminPage()">
+
+    <p>{{getUserName}}</p>
+    <img src="assets/login.svg" alt="avatar">
+  </div>
   <button (click)="logout()" class="btn">Logout</button>
 </div>
 }

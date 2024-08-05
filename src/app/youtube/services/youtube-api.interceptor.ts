@@ -10,7 +10,7 @@ export const youtubeApiInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> => {
-  const keyAPI = 'keyy';
+  const keyAPI = key;
   const part = ['snippet', 'statistics'].join(',');
 
   const searchParams = {
