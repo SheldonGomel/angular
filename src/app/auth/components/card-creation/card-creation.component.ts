@@ -63,7 +63,7 @@ export class CardCreationComponent implements OnInit {
   }
 
   creationDateValidator(
-    control: AbstractControl
+    control: AbstractControl,
   ): { [key: string]: boolean } | null {
     const date = new Date(control.value);
     const today = new Date();
@@ -128,8 +128,6 @@ export class CardCreationComponent implements OnInit {
 
   getTagErrorMessage(index: number): string {
     const errors = this.tags.at(index).get('tag')?.errors;
-
-    console.log({ errors });
     if (errors) {
       if (errors['required']) {
         return 'Please fill up this tag';

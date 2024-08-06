@@ -6,6 +6,7 @@ import { FilterByTextPipe } from 'app/youtube/pipes/filter-by-text.pipe';
 import { SearchService } from 'app/youtube/services/search.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 import { SearchResultItemComponent } from './search-result-item/search-result-item.component';
 
 @Component({
@@ -17,8 +18,6 @@ import { SearchResultItemComponent } from './search-result-item/search-result-it
   styleUrl: './search-results-block.component.scss',
 })
 export class SearchResultsBlockComponent implements OnInit {
-  data: Item[] = [];
-
   searchText: string = '';
 
   searchSubscription$ = new Subscription();
@@ -36,26 +35,26 @@ export class SearchResultsBlockComponent implements OnInit {
       .getSearchText()
       .subscribe((text) => {
         this.searchText = text;
-        this.http.searchData(this.searchText).subscribe(
-          (searchData) => {
-            const ids = searchData.items.map((item) => item.id.videoId);
-            this.http.getData(ids.join(',')).subscribe((videoData) => {
-              this.data = [...videoData.items];
-              this.searchService.setData(this.data);
-            });
-          },
-          (err) => {
+        try {
+          this.http.searchData(this.searchText);
+          this.searchService.setData(this.http.videosDataSignal());
+        } catch (err) {
+          if (err instanceof HttpErrorResponse) {
             if (err.status === 0) {
               this.errorMessage = 'A client-side or network error occurred.';
             } else {
               this.errorMessage = `Backend returned error code ${err.status} ${err.error.error.message} `;
             }
-          },
-        );
+          }
+        }
       });
   }
 
   ngOnDestroy() {
     this.searchSubscription$.unsubscribe();
+  }
+
+  get data(): Item[] {
+    return this.http.videosDataSignal();
   }
 }

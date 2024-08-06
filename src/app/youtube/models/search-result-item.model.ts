@@ -89,3 +89,15 @@ export interface ResultItem {
 }
 
 export type StatusColors = 'red' | 'green' | 'blue' | 'yellow';
+
+export type DetailsCard = {
+  title: string;
+  imgurl: string;
+  date: string;
+  statusDate: Date;
+  likes: string;
+  dislikes: string;
+  comments: string;
+  views: string;
+  description: string;
+}
