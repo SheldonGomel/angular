@@ -20,6 +20,7 @@
 
 .image {
   width: 730px;
+  max-height: 380px;
 }
 
 .info {
@@ -36,7 +37,7 @@
 }
 
 .title {
-  margin:  0 ;
+  margin: 0;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
@@ -47,19 +48,16 @@
   height: 55px;
   overflow: hidden;
 }
-.date{
+.date {
+  align-self: flex-end;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: right;
 
-align-self: flex-end;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 10px;
-line-height: 12px;
-text-align: right;
-
-color: colors.$text-not-found;
-
-
+  color: colors.$text-not-found;
 }
 
 .description {
@@ -80,6 +78,7 @@ color: colors.$text-not-found;
   width: 220px;
   margin: 4px auto;
   display: flex;
+  gap:10px;
   justify-content: space-around;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-style: normal;
@@ -90,11 +89,27 @@ color: colors.$text-not-found;
   align-self: flex-end;
 }
 
-.status{
+.status {
   align-self: flex-end;
   width: 100%;
   margin: 5px 0 0;
   border-radius: 0px 0px 5px 0px;
   overflow: hidden;
-  perspective: 1px; 
+  perspective: 1px;
+}
+
+.favorite {
+  cursor: pointer;
+  & img {
+    max-width: 32px;
+    max-height: 32px;
+  }
+}
+.delete {
+  cursor: pointer;
+  margin-left: 20px;
+  & img {
+    max-width: 32px;
+    max-height: 32px;
+  }
 }

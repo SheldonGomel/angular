@@ -36,4 +36,8 @@ export class LoginBlockComponent {
   goToAdminPage(): void {
     this.router.navigate(['/admin']);
   }
+
+  goToFavoritePage(): void {
+    this.router.navigate(['/fav']);
+  }
 }

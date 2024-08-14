@@ -8,6 +8,19 @@
   </div>
   <app-video-title class="title" [title]="title"></app-video-title>
   <app-more-button [item]="item"></app-more-button>
-
+  @if(type === 'custom'){
+  <div class="delete" (click)="onDelete()">
+    <img src="assets/delete.svg" alt="">
+  </div>}
+  @else{
+    <div class="favorite" (click)="toggleFavorite()">
+      @if(favorite){
+      <img src="assets/favorite.svg" alt="add to favorite">
+      }
+      @else{
+      <img src="assets/notfavorite.svg" alt="remove from favorite">
+      }
+    </div>
+    }
     <app-publication-status class="status" [date]="date"></app-publication-status>
 </div>}

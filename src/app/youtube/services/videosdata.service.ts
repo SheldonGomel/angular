@@ -4,6 +4,9 @@ import {
   Results,
   SearchResults,
 } from 'app/youtube/models/search-results-block.model';
+import { Store } from '@ngrx/store';
+import { AppState } from 'app/redux/reducers/app.reducer';
+import { setApiVideos } from 'app/redux/actions/apiVideo.action';
 import { DetailsCard, Item } from '../models/search-result-item.model';
 
 @Injectable({
@@ -14,7 +17,7 @@ export class DataService {
 
   private searchApiUrl = 'https://www.googleapis.com/youtube/v3/search';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store<AppState>) {}
 
   private detailsInit: DetailsCard = {
     title: '',
@@ -26,9 +29,8 @@ export class DataService {
     comments: '',
     views: '',
     description: '',
+    favorite: false,
   };
-
-  // searchResultsSignal: WritableSignal<string> = signal('');
 
   videosDataSignal: WritableSignal<Item[] | []> = signal([]);
 
@@ -46,14 +48,14 @@ export class DataService {
     });
   }
 
-  getData(ids: string): void {
-    const getData$ = this.http.get<Results>(this.youTubeApiUrl, {
-      params: { id: ids },
-    });
-    getData$.subscribe((videoData) => {
-      const data = [...videoData.items];
-      this.videosDataSignal.set(data);
-    });
+  getData(ids: string) {
+    this.http
+      .get<Results>(this.youTubeApiUrl, {
+        params: { id: ids },
+      })
+      .subscribe((videos) => {
+        this.store.dispatch(setApiVideos({ apiVideos: videos.items }));
+      });
   }
 
   getDetailedData(id: string): void {
@@ -82,6 +84,7 @@ export class DataService {
           month: 'long',
           day: 'numeric',
         }),
+        favorite: content.favorite ?? false,
       };
       this.detailsDataSignal.set(details);
     });

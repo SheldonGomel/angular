@@ -1,7 +1,7 @@
 @if (logginState){
 <div class="wrapper">
+  <img class="favorite" src="assets/favorite.svg" alt="favorite page" (click)="goToFavoritePage()">
   <div class="admin wrapper" (click)="goToAdminPage()">
-
     <p>{{getUserName}}</p>
     <img src="assets/login.svg" alt="avatar">
   </div>

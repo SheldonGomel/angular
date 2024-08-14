@@ -1,22 +1,45 @@
-.wrapper{
+@use "@styles/_variables.scss" as colors;
+
+.wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   padding: 14px;
-  background-color: #fff;
+  background-color: colors.$main-background-color;
   font-size: 1em;
   font-family: Arial, Helvetica, sans-serif;
 }
-.container{
+.container {
   max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: center;
 }
-.error{
-max-width: 500px;
-text-align: center;
-line-height: 24px;
+.error {
+  max-width: 500px;
+  text-align: center;
+  line-height: 24px;
 }
+
+.generate {
+  position: absolute;
+  top: 83px;
+  background-color: colors.$filter-button-color;
+  border: none;
+  color: colors.$bth-text;
+  &:hover{
+    cursor: pointer;
+    background-color: colors.$filter-button-hover-color;
+  }
+}
+.left{
+  left: 3px;
+}
+
+.right{
+  right: 3px;
+}
+

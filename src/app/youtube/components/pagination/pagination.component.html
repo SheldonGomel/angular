@@ -1,0 +1,17 @@
+@if(totalItems > itemsPerPage){
+<nav>
+  <ul class="pagination">
+    <li class="page-item arrow" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="changePage(currentPage - 1)"> << </a>
+    </li>
+    @for(page of pages; track page;){
+    <li (click)="changePage(page)" class="page-item number" [class.active]="page === currentPage">
+      <a class="page-link">{{ page }}</a>
+    </li>
+    }
+    <li class="page-item arrow" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="changePage(currentPage + 1)"> >> </a>
+    </li>
+  </ul>
+</nav>
+}

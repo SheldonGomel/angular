@@ -3,56 +3,57 @@
     <h1 class="formLabel">Create new card</h1>
     <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
       <div>
-        <label for="title">Title</label>
-        <input id="title" formControlName="title" class="form-control" />
-        @if (isControlInvalid('title')){
-        <p class="message">{{ getErrorMessage('title') }}</p>
+        <label for={{controlName.title}}>Title</label>
+        <input id={{controlName.title}} formControlName={{controlName.title}} class="form-control" />
+        @if (isControlInvalid(controlName.title)){
+        <p class="message">{{ getErrorMessage(controlName.title) }}</p>
         }
       </div>
 
       <div>
-        <label for="description">Description</label>
-        <textarea id="description" formControlName="description" class="form-control"></textarea>
-        @if (isControlInvalid('description')){
-          <p class="message">{{ getErrorMessage('description') }}</p>
-          }
+        <label for="{{controlName.description}}">Description</label>
+        <textarea id="{{controlName.description}}" formControlName="{{controlName.description}}" class="form-control"></textarea>
+        @if (isControlInvalid(controlName.description)){
+        <p class="message">{{ getErrorMessage(controlName.description) }}</p>
+        }
       </div>
 
       <div>
-        <label for="imageLink">Image Link</label>
-        <input id="imageLink" formControlName="imageLink" class="form-control" />
-        @if (isControlInvalid('imageLink')){
-          <p class="message">{{ getErrorMessage('imageLink') }}</p>
-          }
+        <label for="{{controlName.imageLink}}">Image Link</label>
+        <input id="{{controlName.imageLink}}" formControlName="{{controlName.imageLink}}" class="form-control" />
+        @if (isControlInvalid(controlName.imageLink)){
+        <p class="message">{{ getErrorMessage(controlName.imageLink) }}</p>
+        }
       </div>
 
       <div>
-        <label for="videoLink">Video Link</label>
-        <input id="videoLink" formControlName="videoLink" class="form-control" />
-        @if (isControlInvalid('videoLink')){
-          <p class="message">{{ getErrorMessage('videoLink') }}</p>
-          }
+        <label for="{{controlName.videoLink}}">Video Link</label>
+        <input id="{{controlName.videoLink}}" formControlName="{{controlName.videoLink}}" class="form-control" />
+        @if (isControlInvalid(controlName.videoLink)){
+        <p class="message">{{ getErrorMessage(controlName.videoLink) }}</p>
+        }
       </div>
 
       <div>
-        <label for="creationDate">Creation Date</label>
-        <input id="creationDate" type="date" formControlName="creationDate" class="form-control" />
-        @if (isControlInvalid('creationDate')){
-          <p class="message">{{ getErrorMessage('creationDate') }}</p>
-          }
+        <label for="{{controlName.creationDate}}">Creation Date</label>
+        <input id="{{controlName.creationDate}}" type="date" formControlName="{{controlName.creationDate}}" class="form-control" />
+        @if (isControlInvalid(controlName.creationDate)){
+        <p class="message">{{ getErrorMessage(controlName.creationDate) }}</p>
+        }
       </div>
 
       <div formArrayName="tags">
-        <div *ngFor="let tag of tags.controls; let i = index" [formGroupName]="i">
+        @for(tag of tags.controls; track tag; let i = $index)
+        {<div [formGroupName]="i">
           <label for="tag">Tag {{ i + 1 }}</label>
           <div class="tag">
             <input id="tag" formControlName="tag" class="form-control" />
             @if(i>0){<button class="btn remove" type="button" (click)="removeTag(i)">Remove</button>}
           </div>
           @if (isTagInvalid(i)){
-            <p class="message">{{ getTagErrorMessage(i) }}</p>
-            }
-        </div>
+          <p class="message">{{ getTagErrorMessage(i) }}</p>
+          }
+        </div>}
       </div>
       <div>
         <button class="btn" type="button" (click)="addTag()" [disabled]="tags.length >= 5">Add Tag</button>

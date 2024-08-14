@@ -1,10 +1,15 @@
 <div class="wrapper">
   <div class="container">
-    <!-- | filterByText:searchText" -->
-    <app-search-result-item *ngFor="let item of (data)! | filterByText:searchText"
+    <!-- <app-search-result-item *ngFor="let item of (apiVideos$! | async)! | filterByText:searchText" -->
+    <app-search-result-item *ngFor="let item of videos$! | async"
       [item]="item"></app-search-result-item>
     @if(errorMessage.length){
-      <p [innerHTML]="errorMessage" class="error"></p>
+    <p [innerHTML]="errorMessage" class="error"></p>
     }
   </div>
+  <app-pagination [totalItems]="(totalVideos$! | async)!" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage"
+    (pageChanged)="onPageChanged($event)">
+  </app-pagination>
+  <button class="generate right" (click)="generateCustomVideo()">Generate custom video</button>
+  <button class="generate left" (click)="generateApiVideo()">Generate API video</button>
 </div>

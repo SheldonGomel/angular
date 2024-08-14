@@ -5,11 +5,13 @@ import { DetailedInfoPageComponent } from './youtube/pages/detailed-info-page/de
 import { NotFoundPageComponent } from './shared/pages/not-found-page/not-found-page.component';
 import { AuthGuard } from './auth/guards/auth.service';
 import { AdminPageComponent } from './auth/pages/admin-page/admin-page.component';
+import { FavoritePageComponent } from './favorite/pages/favorite-page/favorite-page.component';
 
 export const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'admin', component: AdminPageComponent },
+  { path: 'fav', component: FavoritePageComponent },
   { path: 'more/:id', component: DetailedInfoPageComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundPageComponent, canActivate: [AuthGuard] },
 ];

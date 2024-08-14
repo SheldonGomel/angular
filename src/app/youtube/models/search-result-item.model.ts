@@ -45,8 +45,8 @@ export interface Thumbnails {
   default: Default;
   medium: Medium;
   high: High;
-  standard: Standard;
-  maxres: Maxres;
+  standard?: Standard;
+  maxres?: Maxres;
 }
 export interface Snippet {
   publishedAt: string;
@@ -69,6 +69,8 @@ export interface Item {
   id: string;
   snippet: Snippet;
   statistics: Statistics;
+  favorite?: boolean;
+  type: 'custom' | 'api';
 }
 
 export interface SearchItem {
@@ -76,6 +78,7 @@ export interface SearchItem {
   etag: string;
   id: { kind: string; videoId: string };
   snippet: Snippet;
+  favorite?: boolean;
 }
 
 export interface ResultItem {
@@ -100,4 +103,5 @@ export type DetailsCard = {
   comments: string;
   views: string;
   description: string;
-}
+  favorite: boolean;
+};

@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@ngrx/store": "^18.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -47,27 +48,32 @@
     "typescript": "~5.4.2"
   },
   "eslintConfig": {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "extends": [
-    "airbnb-base",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "html"
-  ],
-  "rules": {
-    "linebreak-style": "off",
-    "import/no-unresolved": "off",
-    "import/prefer-default-export": "off",
-    "@typescript-eslint/no-explicit-any": "error",
-    "no-useless-constructor": "off",
-    "no-empty-function": "off",
-    "class-methods-use-this": "off",
-    "dot-notation":"off"
-  }
-}
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "airbnb-base",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "import",
+      "html"
+    ],
+    "rules": {
+      "linebreak-style": "off",
+      "import/no-unresolved": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/no-explicit-any": "error",
+      "no-useless-constructor": "off",
+      "no-empty-function": "off",
+      "class-methods-use-this": "off",
+      "dot-notation": "off",
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": "error",
+      "implicit-arrow-linebreak":"off",
+      "comma-dangle":"off",
+      "object-curly-newline":"off"
 
+    }
+  }
 }

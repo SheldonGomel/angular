@@ -1,0 +1,39 @@
+@use "@styles/_variables.scss" as colors;
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.arrow {
+  margin: 10px;
+  padding: 5px;
+  color: colors.$form-group-label;
+  background: colors.$primary-background-color;
+  border-radius: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.number {
+  margin: 10px 0;
+  padding: 5px;
+  color: colors.$form-group-label;
+  cursor: pointer;
+  &:hover {
+    color: colors.$item-title-color;
+  }
+}
+
+.active {
+  color: colors.$filter-button-color;
+  &:hover {
+    color: colors.$filter-button-color;
+  }
+}
+
+.disabled {
+  color: colors.$arrow-disabled;
+  cursor: default;
+}

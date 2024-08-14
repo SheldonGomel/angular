@@ -16,6 +16,20 @@
         <app-likes-count [count]="details.likes"></app-likes-count>
         <!-- <app-dislikes-count [count]="details.dislikes"></app-dislikes-count> -->
         <app-comments-count [count]="details.comments"></app-comments-count>
+        @if(type === 'custom'){
+        <div class="delete" (click)="onDelete()">
+          <img src="assets/delete.svg" alt="">
+        </div>}
+        @else{
+        <div class="favorite" (click)="toggleFavorite()">
+          @if(details.favorite){
+          <img src="assets/favorite.svg" alt="add to favorite">
+          }
+          @else{
+          <img src="assets/notfavorite.svg" alt="remove from favorite">
+          }
+        </div>
+        }
       </div>
       <app-publication-status [date]="details.statusDate" class="status"></app-publication-status>
     </div>
