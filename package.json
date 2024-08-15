@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@ngrx/effects": "^18.0.2",
     "@ngrx/store": "^18.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -70,10 +71,9 @@
       "dot-notation": "off",
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": "error",
-      "implicit-arrow-linebreak":"off",
-      "comma-dangle":"off",
-      "object-curly-newline":"off"
-
+      "implicit-arrow-linebreak": "off",
+      "comma-dangle": "off",
+      "object-curly-newline": "off"
     }
   }
 }

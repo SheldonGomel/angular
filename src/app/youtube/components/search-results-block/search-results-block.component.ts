@@ -3,16 +3,14 @@ import { DataService } from 'app/youtube/services/videosdata.service';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { Item } from 'app/youtube/models/search-result-item.model';
 import { FilterByTextPipe } from 'app/youtube/pipes/filter-by-text.pipe';
-import { SearchService } from 'app/youtube/services/search.service';
 import { Observable, Subscription } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import {
   selectTotalVideos,
   selectVideosForCurrentPage,
 } from 'app/redux/selectors/app.selector';
 import { AppState } from 'app/redux/reducers/app.reducer';
-import { addApiVideo, setApiVideos } from 'app/redux/actions/apiVideo.action';
+import { addApiVideo } from 'app/redux/actions/apiVideo.action';
 import { addCustomVideo } from 'app/redux/actions/customVideo.action';
 import { UtilsService } from 'app/youtube/services/utils.service';
 import { SearchResultItemComponent } from './search-result-item/search-result-item.component';
@@ -52,31 +50,29 @@ export class SearchResultsBlockComponent implements OnInit {
   totalVideos$: Observable<number> = new Observable();
 
   constructor(
-    private searchService: SearchService,
     private store: Store<AppState>,
     private utils: UtilsService
-  ) {
-    this.loadVideosForPage(this.currentPage);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.totalVideos$ = this.store.select(selectTotalVideos);
-    this.searchSubscription$ = this.searchService
-      .getSearchText()
-      .subscribe((text) => {
-        this.searchText = text;
-        try {
-          // this.http.searchData(this.searchText);
-        } catch (err) {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status === 0) {
-              this.errorMessage = 'A client-side or network error occurred.';
-            } else {
-              this.errorMessage = `Backend returned error code ${err.status} ${err.error.error.message} `;
-            }
-          }
-        }
-      });
+    this.loadVideosForPage(this.currentPage);
+    // this.searchSubscription$ = this.searchService
+    //   .getSearchText()
+    //   .subscribe((text) => {
+    //     this.searchText = text;
+    //     try {
+    //       // this.http.searchData(this.searchText);
+    //     } catch (err) {
+    //       if (err instanceof HttpErrorResponse) {
+    //         if (err.status === 0) {
+    //           this.errorMessage = 'A client-side or network error occurred.';
+    //         } else {
+    //           this.errorMessage = `Backend returned error code ${err.status} ${err.error.error.message} `;
+    //         }
+    //       }
+    //     }
+    //   });
   }
 
   ngOnDestroy() {

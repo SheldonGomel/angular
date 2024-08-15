@@ -19,8 +19,7 @@ export const customVideosReduser = createReducer(
         return { ...customVideo, favorite: !customVideo.favorite };
       }
       return customVideo;
-    })
-  ),
+    })),
   on(delteCustomVideo, (state, { id }) => {
     const st = state.filter((customVideo) => customVideo.id !== id);
     console.log(st);

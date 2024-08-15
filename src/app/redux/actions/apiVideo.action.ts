@@ -5,6 +5,10 @@ export const getApiVideos = createAction(
   '[Items] Get API Videos Data',
   props<{ apiVideos: Item[] }>(),
 );
+export const requestApiVideos = createAction(
+  '[Items] Request API Videos Data',
+  props<{ query: string }>(),
+);
 export const setApiVideos = createAction(
   '[Items] Set API Videos Data',
   props<{ apiVideos: Item[] }>(),

@@ -6,7 +6,7 @@ import {
 } from 'app/youtube/models/search-results-block.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'app/redux/reducers/app.reducer';
-import { setApiVideos } from 'app/redux/actions/apiVideo.action';
+import { Observable } from 'rxjs';
 import { DetailsCard, Item } from '../models/search-result-item.model';
 
 @Injectable({
@@ -36,26 +36,25 @@ export class DataService {
 
   detailsDataSignal: WritableSignal<DetailsCard> = signal(this.detailsInit);
 
-  searchData(searchText: string): void {
-    const search$ = this.http.get<SearchResults>(this.searchApiUrl, {
+  searchData(searchText: string): Observable<SearchResults> {
+    return this.http.get<SearchResults>(this.searchApiUrl, {
       params: { q: searchText },
     });
-    search$.subscribe((searchData) => {
-      const ids = searchData.items.map((item) => item.id.videoId);
-      if (ids.length) {
-        this.getData(ids.join(','));
-      }
-    });
+    // search$.subscribe((searchData) => {
+    //   const ids = searchData.items.map((item) => item.id.videoId);
+    //   if (ids.length) {
+    //     this.getData(ids.join(','));
+    //   }
+    // });
   }
 
-  getData(ids: string) {
-    this.http
-      .get<Results>(this.youTubeApiUrl, {
-        params: { id: ids },
-      })
-      .subscribe((videos) => {
-        this.store.dispatch(setApiVideos({ apiVideos: videos.items }));
-      });
+  getData(ids: string): Observable<Results> {
+    return this.http.get<Results>(this.youTubeApiUrl, {
+      params: { id: ids },
+    });
+    // .subscribe((videos) => {
+    //   this.store.dispatch(setApiVideos({ apiVideos: videos.items }));
+    // });
   }
 
   getDetailedData(id: string): void {

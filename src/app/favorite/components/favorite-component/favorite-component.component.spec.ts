@@ -10,7 +10,7 @@ describe('FavoriteComponentComponent', () => {
     await TestBed.configureTestingModule({
       imports: [FavoriteComponentComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FavoriteComponentComponent);
     component = fixture.componentInstance;

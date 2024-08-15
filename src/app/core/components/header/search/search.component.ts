@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { requestApiVideos } from 'app/redux/actions/apiVideo.action';
+import { AppState } from 'app/redux/reducers/app.reducer';
 import { SearchService } from 'app/youtube/services/search.service';
-import { DataService } from 'app/youtube/services/videosdata.service';
 import {
   debounceTime,
   filter,
@@ -26,7 +28,7 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
-    private http: DataService
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -40,16 +42,15 @@ export class SearchComponent implements OnInit {
         filter((value) => value.length >= this.minCharsToSearch)
       )
       .subscribe((value) => {
-        // this.searchService.setSearchText(value);
-        this.http.searchData(value);
+        this.store.dispatch(requestApiVideos({ query: value }));
         this.searchService.toggleVisibility();
       });
   }
 
   onPressEnter(event: KeyboardEvent) {
     if (event.key === 'Enter') {
+      this.store.dispatch(requestApiVideos({ query: this.searchText }));
       this.searchService.toggleVisibility();
-      this.searchService.setSearchText(this.searchText);
     }
   }
 }

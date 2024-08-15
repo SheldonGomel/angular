@@ -1,7 +1,17 @@
 <div class="wrapper">
   <div class="container">
-    @for (video of favoriteVideos; track video) {
-    <app-search-result-item [item]="video"></app-search-result-item>
+    @if(favoriteVideos.length){
+
+      @for (video of favoriteVideos; track video) {
+      <app-search-result-item [item]="video"></app-search-result-item>
+      }
+    }
+    @else{
+      <div>
+
+        <h1 class="mess">Favorite list is empty</h1>
+        <a [routerLink]="['/']" class="mainlink"> Go to main page</a>
+      </div>
     }
   </div>
 </div>

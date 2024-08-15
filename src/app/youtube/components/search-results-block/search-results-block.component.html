@@ -1,6 +1,5 @@
 <div class="wrapper">
   <div class="container">
-    <!-- <app-search-result-item *ngFor="let item of (apiVideos$! | async)! | filterByText:searchText" -->
     <app-search-result-item *ngFor="let item of videos$! | async"
       [item]="item"></app-search-result-item>
     @if(errorMessage.length){
